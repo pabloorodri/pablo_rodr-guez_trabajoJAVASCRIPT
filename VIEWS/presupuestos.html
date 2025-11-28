@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulario de Presupuesto</title>
+        <link rel="stylesheet" href="estilo.css">
+    </head>
+    <body>
+        <form id="presupuestoForm">
+            <!-- DATOS DE CONTATCTO -->
+            <fieldset>
+                <legend>Datos de Contacto</legend>
+
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" maxlength="15" required>
+
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" maxlength="40" required>
+
+                <label for="telfono">Teléfono:</label>
+                <input type="text" id="telefono" maxlength="9" required>
+
+                <label for="email">Correo Electonico:</label>
+                <input type="text" id="email" required>
+            </fieldset>
+
+            <!-- PRESUPUESTOS-->
+            
+            <fieldset>
+                <legend>Presupuestos</legend>
+
+                <label for="producto">Producto:</label>
+                <select id="producto" required>
+                    <option value="">Selecciona un producto</option>
+                    <option value="500">Producto 1 - 500€</option>
+                    <option value="800">Producto 2 - 800€</option>
+                    <option value="1200">Producto 3 - 1200€</option>
+                </select>
+
+                <label for="plazo">Nº de plazos (10% de descuento en plazos superiores a 1 año):</label>
+                <input type="number" id="plazo" min="1" max="24" value="1" required>
+
+                <div class="extras">
+                    <label>Extras:</label>
+                    <label><input type="checkbox" value="100">Envio rápido (+100€)</label>
+                    <label><input type="checkbox" value="200">Garantia extendida (+200€)</label>
+                    <label><input type="checkbox" value="50">Embaleja especial (+50€)</label>
+                </div>
+
+                <p>Presupuesto total: <span id="total" class="resultado">0 €</span></p>
+            </fieldset>
+
+
+            <!--CONDICIONES-->
+            <fieldset>
+                <legend>Condiciones</legend>
+                <label><input type="checkbox" id="condiciones" required>Acepto los términos y condiciones de privacidad</label>
+            </fieldset>
+
+            <div class="botones">
+                <button type="reset">Reiniciar</button>
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+
+        <script>
+            const form = document.getElementById('presupuestoForm');
+            const totalE1 = document.getElementById('total');
+            const producto = document.getElementById('producto');
+            const plazo = document.getElementById('plazo');
+            const extras = document.querySelectorAll('.extras input');
+
+           // Funcion principal: calcular presupuesto
+            function calcularPresupuesto() {
+                let total = 0;
+
+
+                //Producto
+                const precioProducto = parseFloat(producto.value) || 0;
+                total += precioProducto;
+
+                //Extras
+                extras.forEach(extra => {
+                    if (extra.checked) {
+                        total += parseFloat(extra.value);
+                    }
+                });
+
+                //Descuento por plazo
+                const meses = parseInt(plazo.value) || 1;
+                if (meses > 12) {
+                    total *= 0.9; //10% descuento si plazo > 12 meses
+                }
+
+                totalE1.textContent = total.toFixed(2) + ' €';
+            }
+
+
+            //Actualizar total automaticamente
+            producto.addEventListener('change', calcularPresupuesto);
+            plazo.addEventListener('input', calcularPresupuesto);
+            extras.forEach(extra => extra.addEventListener('change', calcularPresupuesto));
+
+            //Validacion de datos de contacto 
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+
+                const nombre = document.getElementById('nombre').value.trim();
+                const apellidos = document.getElementById('apellidos').value.trim();
+                const telefono = document.getElementById('telefono').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const condiciones = document.getElementById('condiciones').checked;
+
+
+                const soloLetras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+                const soloNumeros = /^[0-9]+$/;
+                const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!soloLetras.test(nombre) || nombre.length > 15) {
+                    alert("El nombre solo puede contener letras y máximo 15 caracteres.");
+                    return;
+                }
+
+                if (!soloLetras.test(apellidos) || apellidos.length > 40) {
+                    alert("Los apellidos solo pueden contener letras y máximo 40 caracteres.");
+                    return;
+                }
+
+                if (!soloNumeros.test(telefono) || telefono.length !== 9) {
+                    alert("El teléfono debe contener solo números y tener 9 dígitos.");
+                    return;
+                }
+
+                if (!emailValido.test(email)) {
+                    alert("Introduce un correo electrónico válido.");
+                    return;
+                }
+
+                if (!condiciones) {
+                    alert("Debes aceptar las condiciones de privacidad.");
+                    return;
+                }
+
+                alert("Formulario enviado correctamente ✅");
+                form.reset();
+                totalE1.textContent = "0 €";
+            });   
+        </script>
+    </body>
+</html>
