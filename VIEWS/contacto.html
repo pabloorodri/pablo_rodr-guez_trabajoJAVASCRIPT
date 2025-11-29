@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RideOn - Contacto</title>
+    <link rel="stylesheet" href="../CSS/estilos.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <h1>Contacto RideOn</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="presupuestos.html">Presupuestos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="contacto-info">
+            <h2>Información de Contacto</h2>
+            <p>Dirección: Camino Rural 45, Pueblo Verde</p>
+            <p>Teléfono: +34 600 123 456</p>
+            <p>Email: contacto@rideon.com</p>
+        </section>
+
+        <section id="mapa">
+            <h2>Ubicación</h2>
+            <div id="map" style="height: 400px;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 RideOn. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([40.4168, -3.7038], 13); // Ubicación ficticia
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        const marker = L.marker([40.4168, -3.7038]).addTo(map)
+            .bindPopup('RideOn - Experiencias Rurales')
+            .openPopup();
+    </script>
+</body>
+</html>
