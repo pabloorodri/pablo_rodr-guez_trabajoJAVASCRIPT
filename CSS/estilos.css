@@ -1,17 +1,81 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #fdfcf7; /* color claro tipo naturaleza */
     color: #2b2b2b;
 }
 
+h1, h2, legend{
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.5px;
+}
+
 header {
     background-color: #4CAF50; /* verde naturaleza */
     color: white;
-    padding: 20px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    flex-wrap: wrap;
 }
+
+.logo {
+    width: 85px;
+    height: auto;
+}
+.nav-bar ul{
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-link{
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s easse;
+    position: relative;
+}
+
+.nav-link::after{
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: #FFC045;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover{
+    color: #FFC045;
+}
+.nav-link:hover::after{
+    width: 100%;
+}
+
+
+.nav-link-active {
+    color: #FFD36B; /* tono cálido para contraste */
+    border-bottom: 3px solid #FFD36B;
+    padding-bottom: 3px; /* separa el texto de la línea */
+    font-weight: 900; /* más grueso */
+    transform: scale(1.05); /* sutil ampliación */
+    background-color: rgba(255, 192, 69, 0.18);
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.nav-link-active::after{
+    width: 100%;
+    background-color: #FFD36B;
+}
+
 
 nav ul {
     list-style: none;
@@ -35,11 +99,87 @@ section {
     border-bottom: 1px solid #ddd;
 }
 
+#activities {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.activities-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.activity-card {
+    background-color: #ffffff;
+    border-radius: 14px;
+    text-align: center;
+    padding: 18px;
+    width: 260px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    transition: 0.3s, 
+}
+
+.activity-card img{
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.activity-card p{
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.activity-card:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+
+#noticias-container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 25px;
+}
+
+
 .noticia {
     background-color: #e8f5e9;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
+    padding: 18px;
+    border-left: 6px solid #4CAF50;
+    border-radius: 6px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.7);
+
+    /*Animacion*/
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.noticia h3 {
+    margin: 0 0 8px;
+}
+
+.noticia span{
+    font-size: 0.9em;
+    display: block;
+    margin-top: 10px;
+    color: #3d3d3d;
 }
 
 .galeria-img {
@@ -59,4 +199,81 @@ footer {
     color: white;
     text-align: center;
     padding: 15px;
+}
+
+
+/* ==== FORMULARIO ==== */
+form {
+    background-color: #e8f5e9;
+    padding: 25px;
+    border-radius: 10px;
+    max-width: 650px;
+    margin: 40px auto;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+    border: 2px solid #4CAF50;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    padding: 20px;
+}
+
+legend {
+    font-weight: bold;
+    color: #2b2b2b;
+    padding: 0 8px;
+}
+
+label {
+    display: block;
+    margin: 12px 0 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #999;
+    box-sizing: border-box;
+}
+
+.extras label {
+    display: block;
+    margin: 5px 0;
+}
+
+.resultado {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.botones {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.botones button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    margin: 0 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.botones button[type="reset"] {
+    background-color: #b3b3b3;
+    color: white;
+}
+
+.botones button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.botones button:hover {
+    transform: scale(1.05);
 }

@@ -1,12 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Formulario de Presupuesto</title>
-        <link rel="stylesheet" href="estilo.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../CSS/estilos.css">
     </head>
     <body>
+        <header>
+            <img src="../ASSETS/SVG/logoRideOn.svg" alt="RideOn Logo" class="logo">
+            <h1>Reserva. Vive. Repite - RideOn</h1>
+            <nav class="nav-bar">
+                <ul> 
+                    <li><a href="../index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="../VIEWS/galeria.html" class="nav-link">Galeria</a></li>
+                    <li><a href="../VIEWS/presupuestos.html" class="nav-link-active">Presupuestos</a></li>
+                    <li><a href="../VIEWS/contacto.html" class="nav-link">Contactanos</a></li>
+                </ul> 
+            </nav>
+        </header>
         <form id="presupuestoForm">
             <!-- DATOS DE CONTATCTO -->
             <fieldset>
@@ -33,9 +46,9 @@
                 <label for="producto">Producto:</label>
                 <select id="producto" required>
                     <option value="">Selecciona un producto</option>
-                    <option value="500">Producto 1 - 500€</option>
-                    <option value="800">Producto 2 - 800€</option>
-                    <option value="1200">Producto 3 - 1200€</option>
+                    <option value="500">Ruta de Senderismo - 500€</option>
+                    <option value="800">Escalada - 800€</option>
+                    <option value="1200">Campamento de aventura - 1200€</option>
                 </select>
 
                 <label for="plazo">Nº de plazos (10% de descuento en plazos superiores a 1 año):</label>
@@ -43,9 +56,9 @@
 
                 <div class="extras">
                     <label>Extras:</label>
-                    <label><input type="checkbox" value="100">Envio rápido (+100€)</label>
-                    <label><input type="checkbox" value="200">Garantia extendida (+200€)</label>
-                    <label><input type="checkbox" value="50">Embaleja especial (+50€)</label>
+                    <label><input type="checkbox" value="100">Reportaje Fotografico (+100€)</label>
+                    <label><input type="checkbox" value="200">Equipo Tecnico Completo (+200€)</label>
+                    <label><input type="checkbox" value="50">Transporte en furgoneta (+50€)</label>
                 </div>
 
                 <p>Presupuesto total: <span id="total" class="resultado">0 €</span></p>
@@ -63,6 +76,9 @@
                 <button type="submit">Enviar</button>
             </div>
         </form>
+        <footer>
+            <p>&copy;2025 RideOn. Todos los derechos reservados.</p>
+        </footer>
 
         <script>
             const form = document.getElementById('presupuestoForm');
@@ -147,5 +163,6 @@
                 totalE1.textContent = "0 €";
             });   
         </script>
+        <script src="../JS/app.js"></script>
     </body>
 </html>

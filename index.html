@@ -1,30 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RideOn - Aventuras al Aire Libre</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/estilos.css">
     <script src="./JS/noticias.js" defer></script>
 
 </head>
 <body>
-    <header>
-        <h1>RideOn</h1>
-        <nav class="nav-bar">
-                <ul> 
-                <a href="index.html" class="nav-link">Inicio</a>
-                <a href="./VIEWS/galeria.html" class="nav-link">Galeria</a>
-                <a href="./VIEWS/presupuestos.html" class="nav-link">Presupuestos</a>
-                <a href="./VIEWS/contacto.html" class="nav-link">Contactanos</a>
-                </ul> 
-        </nav>
-        <img src="./ASSETS/SVG/RideOnlogo.svg" alt="RideOn Logo" class="logo">
-    </header>
-    <main>
 
         <!--Seccion 1: sobre RideOn -->
+    <header>
+        <img src="./ASSETS/SVG/logoRideOn.svg" alt="RideOn Logo" class="logo">
+        <h1>Reserva. Vive. Repite - RideOn</h1>
+        <nav class="nav-bar">
+                <ul>                   
+                    <li><a href="index.html" class="nav-link-active">Inicio</a></li>
+                    <li><a href="./VIEWS/galeria.html" class="nav-link">Galeria</a></li>
+                    <li><a href="./VIEWS/presupuestos.html" class="nav-link">Presupuestos</a></li>
+                    <li><a href="./VIEWS/contacto.html" class="nav-link">Contactanos</a></li>
+                </ul> 
+        </nav>
+    </header>
 
+    <!--Seccion 1: sobre RideOn -->
+
+    <main>
         <section id="about">
             <h2>Sobre RideOn</h2>
             <p>RideOn organiza experiencias rurales únicas: senderismo, escalada y actividades
@@ -35,18 +38,34 @@
 
         <section id="activities">
             <h2>Nuestras actividades</h2>
-            <ul>
-                <li>Senderismo guiado por paisajes naturales</li>
-                <li>Escalada</li>
-                <li>Campamentos y actividades en grupo</li>
-                <li>Paseos a caballo</li>
-            </ul>
+
+            <div class="activities-container">
+                <div class="activity-card">
+                    <img src="./ASSETS/IMAGES/sendero.jpg" alt="senderismo guiado">
+                    <p>Senderismo guiado por paisajes naturales</p>  
+                </div>
+
+                <div class="activity-card">
+                    <img src="./ASSETS/IMAGES/esacalada.jpg" alt="Foto escalada">
+                    <p>Escalada</p>
+                </div>
+
+                <div class="activity-card">
+                    <img src="./ASSETS/IMAGES/campamento.jpg" alt="Campamentos">
+                    <p>Campamentos y actividades en grupo</p>
+                </div>
+
+                <div class="activity-card">
+                    <img src="./ASSETS/IMAGES/rutaCaballo.jpg" alt="rutas a caballo">
+                    <p>Paseos a caballo</p>
+                </div>
+            </div>
         </section>
 
         <!--Section 3: Noticias-->
 
         <section id="noticias">
-            <h2>Ultimas noticias</h2>
+            <h2>Ultimas experiencias de los usuarios</h2>
             <div id="noticias-container"></div>
         </section>
 
@@ -64,6 +83,7 @@
     </footer>
 
 
-    <script src="JS\noticias.json"></script>
+    <script src="./JS/app.js"></script>
+    
 </body>
 </html>

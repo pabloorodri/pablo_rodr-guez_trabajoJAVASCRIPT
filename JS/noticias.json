@@ -1,4 +1,22 @@
 [
-    {"titulo": "Nueva ruta de senderismo en la Sierra Norte", "fecha": "2025-11-10", "contenido": "Explora la nueva ruta de senderismo diseñada para disfrutar de paisajes espectaculares y actividades seguras en grupo."},
-    {"titulo": "Campamento de escalada para principiantes", "fecha": "2025-11-20", "contenido": "Abiertas las inscripciones para nuestro campamento de escalada, ideal para quienes quieren iniciarse en esta aventura."}
+  {
+    "usuario": "María López",
+    "titulo": "Increíble experiencia en la ruta del cañón",
+    "mensaje": "Participé en la actividad de senderismo este fin de semana y fue espectacular. Los monitores muy atentos y los paisajes inolvidables."
+  },
+  {
+    "usuario": "Carlos Pérez",
+    "titulo": "Escalada nivel avanzado: ¡brutal!",
+    "mensaje": "Hice la ruta de escalada por primera vez y superó mis expectativas. Muy segura y cargada de adrenalina."
+  },
+  {
+    "usuario": "Ana Fernández",
+    "titulo": "Campamento familiar inolvidable",
+    "mensaje": "Mis hijos disfrutaron muchísimo en el campamento. ¡Ya estamos planeando volver el próximo verano!"
+  },
+  {
+    "usuario": "Javier García",
+    "titulo": "Cabalgata al atardecer",
+    "mensaje": "La actividad de paseo a caballo fue un sueño. Ver la puesta de sol desde la montaña es un recuerdo que no voy a olvidar."
+  }
 ]
