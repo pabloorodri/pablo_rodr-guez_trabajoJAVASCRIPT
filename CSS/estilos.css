@@ -4,6 +4,7 @@ body {
     padding: 0;
     background-color: #fdfcf7; 
     color: #2b2b2b;
+    min-height: 100vh;
 }
 
 h1, h2, legend{
@@ -23,7 +24,9 @@ header {
     padding: 15px 30px;
     flex-wrap: wrap;
 }
-
+main{
+    flex: 1;
+}
 .logo {
     width: 85px;
     height: auto;
