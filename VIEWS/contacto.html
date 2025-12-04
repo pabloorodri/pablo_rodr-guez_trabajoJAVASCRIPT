@@ -24,10 +24,13 @@
 
     <main>
         <section id="contacto-info">
-            <h2>Información de Contacto</h2>
-            <p>Dirección: Camino Rural 45, Pueblo Verde</p>
-            <p>Teléfono: +34 600 123 456</p>
-            <p>Email: contacto@rideon.com</p>
+            <div class="contact-card">
+                <p><strong>Dirección:</strong> Camino Rural 45, Sevilla</p>
+                <p><strong>Teléfono:</strong> +34 600 123 456</p>
+                <p><strong>Email:</strong> contacto@rideon.com</p>
+                <p><strong>Horario:</strong> Lunes a Viernes — 9:00 a 18:00</p>
+                <p><strong>Atención urgente:</strong> Disponible 24/7 durante actividades</p>
+            </div>
         </section>
 
         <section id="mapa">
@@ -38,20 +41,29 @@
 
     <footer>
         <p>&copy; 2025 RideOn. Todos los derechos reservados.</p>
+        <div class="social-icons">
+        <img src="../ASSETS/SVG/facebook-svgrepo-com.svg" alt="logo facebook">
+        <img src="../ASSETS/SVG/instagram-svgrepo-com.svg" alt="logo instagram">
+        </div>
     </footer>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        const map = L.map('map').setView([40.4168, -3.7038], 13); // Ubicación ficticia
+        const rideOnLocation = [37.3200, -5.9000];
+
+        // Configuración del mapa
+        const map = L.map('map').setView(rideOnLocation, 13);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
 
-        const marker = L.marker([40.4168, -3.7038]).addTo(map)
-            .bindPopup('RideOn - Experiencias Rurales')
+        // Marcador
+        const marker = L.marker(rideOnLocation).addTo(map)
+            .bindPopup('RideOn - Experiencias Rurales<br>Sevilla')
             .openPopup();
-    </script>
+</script>
+
     <script src="../JS/app.js"></script>
 </body>
 </html>
