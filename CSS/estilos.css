@@ -2,7 +2,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fdfcf7; /* color claro tipo naturaleza */
+    background-color: #fdfcf7; 
     color: #2b2b2b;
 }
 
@@ -12,7 +12,10 @@ h1, h2, legend{
 }
 
 header {
-    background-color: #4CAF50; /* verde naturaleza */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #4CAF50; 
     color: white;
     display: flex;
     align-items: center;
@@ -61,11 +64,11 @@ header {
 
 
 .nav-link-active {
-    color: #FFD36B; /* tono cálido para contraste */
+    color: #FFD36B; 
     border-bottom: 3px solid #FFD36B;
-    padding-bottom: 3px; /* separa el texto de la línea */
-    font-weight: 900; /* más grueso */
-    transform: scale(1.05); /* sutil ampliación */
+    padding-bottom: 3px; 
+    font-weight: 900; 
+    transform: scale(1.05); 
     background-color: rgba(255, 192, 69, 0.18);
     padding: 6px 10px;
     border-radius: 6px;
@@ -160,6 +163,35 @@ section {
     transform: translateY(20px);
     animation: fadeInUp 0.6s ease forwards;
 }
+
+/*Estilos para proximas aventuras*/
+
+#proximas-aventuras {
+    padding: 50px 20px;
+    background-color: #f1f8f4;
+    border-top: 1px solid #ddd;
+}
+
+.aventuras-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.aventura-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 280px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.aventura-card:hover {
+    transform: translateY(-5px);
+}
+
 
 @keyframes fadeInUp {
     from{
