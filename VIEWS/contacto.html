@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RideOn - Contacto</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Leaflet y Routing Machine CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css">
 
 </head>
@@ -38,21 +41,68 @@
 
         <section id="mapa">
             <h2>Ubicación</h2>
-            <div id="map" style="height: 400px;"></div>
+            <div id="map"></div>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2025 RideOn. Todos los derechos reservados.</p>
         <div class="social-icons">
-        <img src="../ASSETS/SVG/facebook-svgrepo-com.svg" alt="logo facebook" width="800" height="800">
-        <img src="../ASSETS/SVG/instagram-svgrepo-com.svg" alt="logo instagram" width="800" height="800">
+        <img src="../ASSETS/SVG/facebook-svgrepo-com.svg" alt="logo facebook">
+        <img src="../ASSETS/SVG/instagram-svgrepo-com.svg" alt="logo instagram">
         </div>
     </footer>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
-    <script src="../JS/mapa.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+
+<script>
+    // Coordenadas de RideOn (Calle Numa 29, Montequinto, Dos Hermanas)
+    const rideOnLocation = [37.33562, -5.95746]; // lat, lng
+
+    // Crear mapa
+    const map = L.map('map').setView(rideOnLocation, 15);
+
+    // Capa de mapa
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Marcador del negocio
+    L.marker(rideOnLocation).addTo(map)
+        .bindPopup('📍 RideOn - Experiencias Rurales<br>Calle Numa 29, Montequinto')
+        .openPopup();
+
+    // Función para obtener ubicación del usuario
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(position => {
+            const userLocation = [position.coords.latitude, position.coords.longitude];
+
+            // Marcador del usuario
+            L.marker(userLocation).addTo(map)
+                .bindPopup("📍 Estás aquí")
+                .openPopup();
+
+            // Mostrar ruta entre usuario y RideOn
+            L.Routing.control({
+                waypoints: [
+                    L.latLng(userLocation),
+                    L.latLng(rideOnLocation)
+                ],
+                routeWhileDragging: false,
+                show: true,
+                addWaypoints: false
+            }).addTo(map);
+
+            // Ajustar la vista para que se vean ambos puntos
+            const bounds = L.latLngBounds([userLocation, rideOnLocation]);
+            map.fitBounds(bounds, { padding: [50, 50] });
+        }, error => {
+            console.error("Error obteniendo ubicación:", error);
+        });
+    }
+</script>
+  
     <script src="../JS/app.js"></script>
 </body>
 </html>
