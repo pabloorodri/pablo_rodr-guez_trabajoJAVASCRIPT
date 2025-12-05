@@ -6,11 +6,12 @@
     <title>RideOn - Contacto</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/estilos.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css">
+
 </head>
 <body>
     <header>
-        <img src="../ASSETS/SVG/logoRideOn.svg" alt="RideOn logo" class="logo">
+        <img src="../ASSETS/SVG/logoRideOn.svg" alt="RideOn logo" class="logo" width="449" height="364">
         <h1>Reserva. Vive. Repite - RideOn</h1>
         <nav class="nav-bar">
             <ul>
@@ -23,7 +24,9 @@
     </header>
 
     <main>
+        
         <section id="contacto-info">
+            <h2>Datos de contacto</h2>
             <div class="contact-card">
                 <p><strong>Dirección:</strong> Camino Rural 45, Sevilla</p>
                 <p><strong>Teléfono:</strong> +34 600 123 456</p>
@@ -42,28 +45,14 @@
     <footer>
         <p>&copy; 2025 RideOn. Todos los derechos reservados.</p>
         <div class="social-icons">
-        <img src="../ASSETS/SVG/facebook-svgrepo-com.svg" alt="logo facebook">
-        <img src="../ASSETS/SVG/instagram-svgrepo-com.svg" alt="logo instagram">
+        <img src="../ASSETS/SVG/facebook-svgrepo-com.svg" alt="logo facebook" width="800" height="800">
+        <img src="../ASSETS/SVG/instagram-svgrepo-com.svg" alt="logo instagram" width="800" height="800">
         </div>
     </footer>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        const rideOnLocation = [37.3200, -5.9000];
-
-        // Configuración del mapa
-        const map = L.map('map').setView(rideOnLocation, 13);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(map);
-
-        // Marcador
-        const marker = L.marker(rideOnLocation).addTo(map)
-            .bindPopup('RideOn - Experiencias Rurales<br>Sevilla')
-            .openPopup();
-</script>
-
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <script src="../JS/mapa.js"></script>
     <script src="../JS/app.js"></script>
 </body>
 </html>
